@@ -2,8 +2,8 @@ import argparse
 import asyncio
 import json
 import os
-import shutil
 
+import dotenv
 import numpy as np
 
 from configs.hotpotqa.configs import CONFIGS as HOTPOTQA_CONFIGS
@@ -59,6 +59,7 @@ argparser.add_argument("--vllm_port", type=int, default=None, help="vllm port")
 
 args = argparser.parse_args()
 
+dotenv.load_dotenv()
 
 if args.logging:
     enable_logging(True)

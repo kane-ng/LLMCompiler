@@ -8,16 +8,16 @@
 **TL;DR:**
 The reasoning capabilities of LLMs enable them to execute multiple function calls, using user-provided functions to overcome
 their inherent limitations (e.g. knowledge cutoffs, poor arithmetic skills, or lack of access to private data).
-While multi-function calling allows them to tackle more complex problems, 
+While multi-function calling allows them to tackle more complex problems,
 current methods often require sequential reasoning and acting for each function which can result
 in high latency, cost, and sometimes inaccurate behavior.
-LLMCompiler addresses this by decomposing problems into multiple tasks 
+LLMCompiler addresses this by decomposing problems into multiple tasks
 that can be executed in parallel, thereby efficiently orchestrating multi-function calling.
 With LLMCompiler, the user specifies the tools
 along with optional in-context examples, and **LLMCompiler automatically computes an optimized orchestration for
 the function calls**.
 LLMCompiler can be used with open-source models such as LLaMA, as well as OpenAI’s GPT models.
-Across a range of tasks that exhibit different patterns of parallel function calling, LLMCompiler 
+Across a range of tasks that exhibit different patterns of parallel function calling, LLMCompiler
 consistently demonstrated **latency speedup, cost saving, and accuracy improvement**.
 For more details, please check out our [paper](https://arxiv.org/abs/2312.04511).
 
@@ -27,24 +27,52 @@ For more details, please check out our [paper](https://arxiv.org/abs/2312.04511)
 * 🦙 [12/29] LLMCompiler is available on [LlamaIndex](https://llamahub.ai/l/llama_packs-agents-llm_compiler?from=llama_packs)
 
 ---
+
 ## Installation
 
-1. Create a conda environment and install the dependencies
-```
+1. Create a conda environment and install the dependencies:
+
+```bash
 conda create --name llmcompiler python=3.10 -y
 conda activate llmcompiler
 ```
 
-2. Clone and install the dependencies
-```
-git clone https://github.com/SqueezeAILab/LLMCompiler
-cd LLMCompiler
-pip install -r requirements.txt
+2. Install the dependencies using Poetry:
+
+```bash
+conda install poetry
+poetry install
 ```
 
 ---
+
 ## Basic Runs
-To reproduce the evaluation results in the paper, run the following command.
+
+1. Create a `.env` file in the root directory of the project and add:
+
+```text
+OPENAI_API_KEY=
+```
+
+2. Create a vector database:
+
+- Update the `directory` variable in `create_db.py` with the path to the directory where your document files are stored. The current version supports PDF and PPTX files.
+
+- Run the following command to create the database:
+
+```bash
+python create_db.py
+```
+
+3. Run the LLMComplier
+
+```bash
+python run_llm_compiler_v2.py [--logging] [--stream]
+```
+
+The `--logging` flag enables logging, and the `--stream` flag enables streaming, which can improve latency.
+
+<!-- To reproduce the evaluation results in the paper, run the following command:
 ```
 python run_llm_compiler.py --api_key {openai-api-key} --benchmark {benchmark-name} --store {store-path} [--logging] [--stream]
 ```
@@ -71,12 +99,12 @@ python evaluate_results.py --file {store-path}
 
 ---
 ## Adding Your Custom Benchmark
-To use LLMCompiler on your custom benchmarks or use cases, 
+To use LLMCompiler on your custom benchmarks or use cases,
 you only need to provide the functions and their descriptions, as well as example prompts.
-Please refer to `configs/hotpotqa`, `configs/movie`, and `configs/parallelqa` as examples. 
+Please refer to `configs/hotpotqa`, `configs/movie`, and `configs/parallelqa` as examples.
 
 * `gpt_prompts.py`: Defines in-context example prompts
-* `tools.py`: Defines functions (i.e. tools) to use, and their descriptions (i.e. instructions and arguments) 
+* `tools.py`: Defines functions (i.e. tools) to use, and their descriptions (i.e. instructions and arguments)
 
 
 ---
@@ -97,4 +125,3 @@ LLMCompiler has been developed as part of the following paper. We appreciate it 
   year={2023}
 }
 ```
-
