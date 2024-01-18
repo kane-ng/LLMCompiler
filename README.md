@@ -33,14 +33,13 @@ For more details, please check out our [paper](https://arxiv.org/abs/2312.04511)
 1. Create a conda environment and install the dependencies:
 
 ```bash
-conda create --name llmcompiler python=3.10 -y
+conda env create --file environment.yml
 conda activate llmcompiler
 ```
 
 2. Install the dependencies using Poetry:
 
 ```bash
-conda install poetry
 poetry install
 ```
 
