@@ -14,12 +14,8 @@ from langchain.callbacks.manager import Callbacks
 from langchain.prompts.few_shot import FewShotPromptTemplate
 from langchain.prompts.prompt import PromptTemplate
 from langchain.pydantic_v1 import root_validator
-from langchain.schema import (
-    AgentAction,
-    AgentFinish,
-    BaseOutputParser,
-    BasePromptTemplate,
-)
+from langchain.schema import (AgentAction, AgentFinish, BaseOutputParser,
+                              BasePromptTemplate)
 from langchain.schema.language_model import BaseLanguageModel
 from langchain.schema.messages import BaseMessage
 from langchain.tools import BaseTool

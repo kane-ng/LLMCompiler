@@ -12,12 +12,9 @@ from langchain.schema.messages import HumanMessage, SystemMessage
 
 from src.executors.schema import Plan
 from src.llm_compiler.constants import END_OF_PLAN
-from src.llm_compiler.output_parser import (
-    ACTION_PATTERN,
-    THOUGHT_PATTERN,
-    LLMCompilerPlanParser,
-    instantiate_task,
-)
+from src.llm_compiler.output_parser import (ACTION_PATTERN, THOUGHT_PATTERN,
+                                            LLMCompilerPlanParser,
+                                            instantiate_task)
 from src.llm_compiler.task_fetching_unit import Task
 from src.tools.base import StructuredTool, Tool
 from src.utils.logger_utils import log

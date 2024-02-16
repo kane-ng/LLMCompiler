@@ -8,11 +8,8 @@ import warnings
 from typing import Any, Dict, List, Optional
 
 import numexpr
-from langchain.callbacks.manager import (
-    AsyncCallbackManagerForChainRun,
-    CallbackManagerForChainRun,
-)
-
+from langchain.callbacks.manager import (AsyncCallbackManagerForChainRun,
+                                         CallbackManagerForChainRun)
 # flake8: noqa
 from langchain.prompts.prompt import PromptTemplate
 from langchain.pydantic_v1 import Extra, root_validator

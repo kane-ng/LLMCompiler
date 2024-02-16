@@ -1,9 +1,15 @@
+import os
+
+import dotenv
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import DirectoryLoader
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+
+dotenv.load_dotenv()
+
 
 directory = "datasets/dev"
 
@@ -34,7 +40,7 @@ docs = split_docs(documents)
 
 # embeddings using langchain
 # embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-api_key = "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"
+api_key = os.getenv("OPENAI_API_KEY")
 embeddings = OpenAIEmbeddings(
     api_key=api_key,
     model="text-embedding-ada-002",

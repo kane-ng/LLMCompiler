@@ -7,10 +7,8 @@ from langchain.docstore.document import Document
 from langchain.document_loaders import DirectoryLoader, TextLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.schema.embeddings import Embeddings
-from langchain.text_splitter import (
-    CharacterTextSplitter,
-    RecursiveCharacterTextSplitter,
-)
+from langchain.text_splitter import (CharacterTextSplitter,
+                                     RecursiveCharacterTextSplitter)
 from langchain_community.vectorstores import Chroma
 
 from utils.config import load_db_config

@@ -10,13 +10,10 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 from langchain.agents.agent import BaseMultiActionAgent, BaseSingleActionAgent
 from langchain.agents.agent_iterator import AgentExecutorIterator
 from langchain.agents.tools import InvalidTool
-from langchain.callbacks.manager import (
-    AsyncCallbackManagerForChainRun,
-    AsyncCallbackManagerForToolRun,
-    CallbackManagerForChainRun,
-    CallbackManagerForToolRun,
-    Callbacks,
-)
+from langchain.callbacks.manager import (AsyncCallbackManagerForChainRun,
+                                         AsyncCallbackManagerForToolRun,
+                                         CallbackManagerForChainRun,
+                                         CallbackManagerForToolRun, Callbacks)
 from langchain.pydantic_v1 import root_validator
 from langchain.schema import AgentAction, AgentFinish, OutputParserException
 from langchain.tools import BaseTool

@@ -1,10 +1,11 @@
+import os
+
+import dotenv
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-import os
-import dotenv
 
 dotenv.load_dotenv()
 

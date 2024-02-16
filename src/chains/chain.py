@@ -14,13 +14,10 @@ from typing import Any, Dict, List, Optional, Union
 import langchain
 import yaml
 from langchain.callbacks.base import BaseCallbackManager
-from langchain.callbacks.manager import (
-    AsyncCallbackManager,
-    AsyncCallbackManagerForChainRun,
-    CallbackManager,
-    CallbackManagerForChainRun,
-    Callbacks,
-)
+from langchain.callbacks.manager import (AsyncCallbackManager,
+                                         AsyncCallbackManagerForChainRun,
+                                         CallbackManager,
+                                         CallbackManagerForChainRun, Callbacks)
 from langchain.load.dump import dumpd
 from langchain.load.serializable import Serializable
 from langchain.pydantic_v1 import Field, root_validator, validator
