@@ -24,8 +24,7 @@ from src.callbacks.callbacks import StatsCallbackHandler
 from src.llm_compiler.constants import END_OF_PLAN
 from src.llm_compiler.llm_compiler import LLMCompiler
 from src.react.base import initialize_react_agent_executor
-from src.utils.evaluation_utils import (arun_and_time, compare_answer,
-                                        normalize_answer)
+from src.utils.evaluation_utils import arun_and_time, compare_answer, normalize_answer
 from src.utils.logger_utils import enable_logging, flush_results
 from src.utils.model_utils import get_model
 

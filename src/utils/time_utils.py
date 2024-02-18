@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass, field
 from functools import update_wrapper
-from typing import Callable, Dict, List
+from typing import Callable, Dict
 
 time_contexts: Dict[str, TimeContext] = {}
 

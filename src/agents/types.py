@@ -1,8 +1,10 @@
 from enum import Enum
 
-from src.react.base import (ReActDocstoreAgentForCustom,
-                            ReActDocstoreAgentForMovie,
-                            ReActDocstoreAgentForWiki)
+from src.react.base import (
+    ReActDocstoreAgentForCustom,
+    ReActDocstoreAgentForMovie,
+    ReActDocstoreAgentForWiki,
+)
 
 
 class AgentType(str, Enum):

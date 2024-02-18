@@ -4,6 +4,7 @@ import os
 
 import dotenv
 from langchain_openai import ChatOpenAI
+from langfuse.callback import CallbackHandler
 
 from configs.dev.configs import CONFIGS as DEV_CONFIGS
 from configs.dev.tools import generate_tools
@@ -56,6 +57,10 @@ async def main():
         streaming=args.stream,
     )
 
+    handler = CallbackHandler(
+        secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
+        public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
+    )
     agent = LLMCompiler(
         tools=tools,
         planner_llm=planner_llm,
@@ -68,11 +73,14 @@ async def main():
         joinner_prompt_final=configs.get("output_prompt_final"),
         max_replans=configs["max_replans"],
         benchmark=False,
+        callbacks=[handler],
     )
 
     while True:
         question = input("Enter question: ")
-        octopus_answer, octopus_time = await arun_and_time(agent.arun, question)
+        octopus_answer, octopus_time = await arun_and_time(
+            agent.arun, question, callbacks=[handler]
+        )
         print(f"Answer: {octopus_answer}")
         print("time: ", octopus_time)
 

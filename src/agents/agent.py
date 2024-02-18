@@ -14,8 +14,12 @@ from langchain.callbacks.manager import Callbacks
 from langchain.prompts.few_shot import FewShotPromptTemplate
 from langchain.prompts.prompt import PromptTemplate
 from langchain.pydantic_v1 import root_validator
-from langchain.schema import (AgentAction, AgentFinish, BaseOutputParser,
-                              BasePromptTemplate)
+from langchain.schema import (
+    AgentAction,
+    AgentFinish,
+    BaseOutputParser,
+    BasePromptTemplate,
+)
 from langchain.schema.language_model import BaseLanguageModel
 from langchain.schema.messages import BaseMessage
 from langchain.tools import BaseTool
@@ -113,7 +117,7 @@ class Agent(BaseSingleActionAgent):
             full_inputs = self.get_full_inputs(intermediate_steps, **kwargs)
             full_output = self.llm_chain.predict(callbacks=callbacks, **full_inputs)
             return self.output_parser.parse(full_output)
-        except Exception as e:
+        except Exception:
             full_inputs["agent_scratchpad"] = (
                 full_inputs["agent_scratchpad"] + full_output + "\nAction: "
             )
@@ -143,7 +147,7 @@ class Agent(BaseSingleActionAgent):
                 callbacks=callbacks, **full_inputs
             )
             agent_output = await self.output_parser.aparse(full_output)
-        except Exception as e:
+        except Exception:
             full_inputs["agent_scratchpad"] = (
                 full_inputs["agent_scratchpad"] + full_output + "\nAction: "
             )

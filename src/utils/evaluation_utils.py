@@ -2,7 +2,6 @@ import re
 import string
 import time
 import traceback
-from typing import Union
 
 
 def normalize_answer(s):

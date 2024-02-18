@@ -1,7 +1,9 @@
 from typing import List, Optional
 
-from langchain.callbacks.manager import (AsyncCallbackManagerForToolRun,
-                                         CallbackManagerForToolRun)
+from langchain.callbacks.manager import (
+    AsyncCallbackManagerForToolRun,
+    CallbackManagerForToolRun,
+)
 from langchain.tools import BaseTool
 
 from src.tools.base import Tool, tool

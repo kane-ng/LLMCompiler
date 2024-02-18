@@ -5,7 +5,10 @@ CONFIGS = {
     "embeddings": "text-embedding-ada-002",
     "planner_prompt": PLANNER_PROMPT,
     "output_prompt": OUTPUT_PROMPT,
-    "max_replans": 1,
-    "presistent_directory": "resources/chroma_db",
+    "max_replans": 0,
+    "presistent_directory": [
+        "resources/chroma_db/BlockchainSolanaDataset",
+        "resources/chroma_db/Llama2PaperDataset",
+    ],
     "k": 5,
 }

@@ -7,10 +7,17 @@ from functools import partial
 from inspect import signature
 from typing import Any, Awaitable, Callable, Dict, Optional, Tuple, Type, Union
 
-from langchain.callbacks.manager import (AsyncCallbackManagerForToolRun,
-                                         CallbackManagerForToolRun)
-from langchain.pydantic_v1 import (BaseModel, Extra, Field, create_model,
-                                   validate_arguments)
+from langchain.callbacks.manager import (
+    AsyncCallbackManagerForToolRun,
+    CallbackManagerForToolRun,
+)
+from langchain.pydantic_v1 import (
+    BaseModel,
+    Extra,
+    Field,
+    create_model,
+    validate_arguments,
+)
 from langchain.schema.runnable import RunnableConfig
 from langchain.tools import BaseTool
 

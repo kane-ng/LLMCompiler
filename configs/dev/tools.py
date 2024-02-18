@@ -3,27 +3,29 @@ from src.tools.knowledge_tool.react_retrieval import ReActRetrieval
 
 
 def generate_tools(cfg):
-    retrieval_chain = ReActRetrieval.setup_retrieval_system(
-        llm_model=cfg["default_model"],
-        embeddings_model=cfg["embeddings"],
-        persist_directory=cfg["presistent_directory"],
-        chain_type="stuff",
-        k=cfg["k"],
-    )
+    tools = []
+    for persist_directory in cfg["presistent_directory"]:
+        retrieval_chain = ReActRetrieval.setup_retrieval_system(
+            llm_model=cfg["default_model"],
+            embeddings_model=cfg["embeddings"],
+            persist_directory=persist_directory,
+            chain_type="stuff",
+            k=cfg["k"],
+        )
 
-    tools = [
-        Tool(
-            name="invoke",
+        tool_name = f"{persist_directory.split('/')[-1]}_search".lower()
+        tool = Tool(
+            name=tool_name,
             func=retrieval_chain.ainvoke,
             return_direct=True,
             description=(
-                "invoke({{'query': query}}) -> str:\n"
+                f"{tool_name}({{'query': query}}) -> str:\n"
                 " - Executes a search for the query on vectorstore.\n"
                 " - Returns the results of the RAG serach and the source documents.\n"
-                " - `query`: query to search for on Wikipedia, e.g., What are the different kinds of pets people commonly own?."
+                " - `query`: query to search for on vector database, e.g., What are the different kinds of pets people commonly own?."
             ),
-            stringify_rule=lambda args: f"invoke({args[0]})",
-        ),
-    ]
+            stringify_rule=lambda args: f"{tool_name}({args[0]})",
+        )
+        tools.append(tool)
 
     return tools
