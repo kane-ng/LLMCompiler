@@ -1,5 +1,4 @@
-from langchain.chat_models import ChatOpenAI
-from langchain.llms import OpenAI
+from langchain_openai import ChatOpenAI, OpenAI
 
 
 def get_model(

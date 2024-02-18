@@ -28,6 +28,7 @@ from src.utils.evaluation_utils import arun_and_time, compare_answer, normalize_
 from src.utils.logger_utils import enable_logging, flush_results
 from src.utils.model_utils import get_model
 
+
 argparser = argparse.ArgumentParser()
 argparser.add_argument("--N", type=int, default=None, help="number of samples")
 argparser.add_argument("--react", action="store_true", help="Run ReAct")
@@ -60,6 +61,7 @@ argparser.add_argument("--vllm_port", type=int, default=None, help="vllm port")
 args = argparser.parse_args()
 
 dotenv.load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 if args.logging:
     enable_logging(True)

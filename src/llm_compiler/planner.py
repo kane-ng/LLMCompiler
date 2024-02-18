@@ -43,6 +43,7 @@ def generate_llm_compiler_prompt(
     )
 
     # Tools
+    i = 0
     for i, tool in enumerate(tools):
         prefix += f"{i+1}. {tool.description}\n"
 
@@ -77,7 +78,7 @@ def generate_llm_compiler_prompt(
 
     # Examples
     prefix += "Here are some examples:\n\n"
-    prefix += example_prompt
+    prefix += str(example_prompt)
 
     return prefix
 

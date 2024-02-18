@@ -67,7 +67,14 @@ class Task:
             if self.stringify_rule:
                 # If the user has specified a custom stringify rule for the
                 # function argument, use it
-                thought_action_observation += f"{idx}{self.stringify_rule(self.args)}\n"
+                # NOTE: weirdly, the stringify rule is get from the tool, not the task
+                # TODO: this is a bug, the stringify rule should be get from the task.
+                # for now, we will use the task's name
+                # thought_action_observation += f"{idx}{self.stringify_rule(self.args)}\n"
+                thought_action_observation += (
+                    f"{idx}{self.name}"
+                    f"{_default_stringify_rule_for_arguments(self.args)}\n"
+                )
             else:
                 # Otherwise, we have a default stringify rule
                 thought_action_observation += (
