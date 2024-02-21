@@ -16,5 +16,6 @@ CONFIGS = {
         "resources/chroma_db/gemini_paper_dataset",
         "resources/chroma_db/gpt_paper_dataset",
     ],
-    "k": 5,
+    "rtv_k": 5,
+    "ggs_k": 5,
 }

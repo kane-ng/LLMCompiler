@@ -52,3 +52,7 @@ class ReActRetrieval:
 
         except Exception as exc:
             raise RuntimeError(f"Error loading Retrieval Chain: {exc}")
+
+
+# NOTE: Use tool with react
+# json_mode

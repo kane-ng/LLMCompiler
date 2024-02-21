@@ -18,6 +18,10 @@ numexpr = "^2.8.8"
 langfuse = "^2.6.4"
 llama-index = "^0.9.34"
 llmsherpa = "^0.1.4"
+layoutparser = "^0.3.4"
+pdf2image = "^1.17.0"
+google-api-python-client = "^2.100.0"
+duckduckgo-search = "^4.4.3"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.2.2"

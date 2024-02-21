@@ -53,6 +53,9 @@ class Task:
     async def __call__(self) -> Any:
         log("running task")
         x = await self.tool(*self.args)
+        # print(type(x))
+        # print(x)
+        # print("-" * 10)
         log("done task")
         return x
 

@@ -60,6 +60,7 @@ def generate_llm_compiler_prompt(
         " - Each action MUST have a unique ID, which is strictly increasing.\n"
         " - Inputs for actions can either be constants or outputs from preceding actions. "
         "In the latter case, use the format $id to denote the ID of the previous action whose output will be the input.\n"
+        # "You only use the google_search tool to search for the answer to the query that did not appear in the any of the knowledge sources.\n"
         f" - Always call join as the last action in the plan. Say '{END_OF_PLAN}' after you call join\n"
         " - Ensure the plan maximizes parallelizability.\n"
         " - Only use the provided action types. If a query cannot be addressed using these, invoke the join action for the next steps.\n"
